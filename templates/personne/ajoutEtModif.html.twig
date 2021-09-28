@@ -1,0 +1,48 @@
+{% extends 'base.html.twig'  %}
+{% block title %}
+	{% if editMode %}
+		Édition Personne
+	{% else %}
+		Ajout Personne
+	{% endif %}
+
+{% endblock %}
+{% block body %}
+
+	{{form_start(form)}}
+
+	<div class="row">
+
+		<div class="form-group col-lg-6">
+			{{form_row(form.nom)}}
+		</div>
+
+		<div class="form-group col-lg-6">
+			{{form_row(form.prenom)}}
+		</div>
+		<div class="form-group col-lg-12">
+			{{form_row(form.naissance)}}
+		</div>
+
+
+
+
+
+<button type="submit" class="btn btn-info mr-2">
+	{% if editMode %}
+		Modifier
+	{% else %}
+		Ajouter
+	{% endif %}
+</button>
+<a href="{{path('personne_index')}}" class="btn btn-dark">Retour</a>
+
+
+
+
+
+	</div>
+	{{form_end(form)}}
+
+
+{% endblock %}

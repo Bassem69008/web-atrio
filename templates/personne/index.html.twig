@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Liste des Personnes
+{% endblock %}
+
+{% block body %}
+	<div class="row">
+		<div class="col-lg-12">
+			<a href="{{path('personne_create')}}" class="btn btn-sm btn-success float-right mb-3 mr-2">
+
+				ajouter
+			</a>
+
+			<table class="table  table-bordered table-white table-hover col-lg-12  card-flight ">
+				<thead class=" text-center">
+					<tr>
+						<th scope="col" class="text-center" width="10px">#</th>
+						<th scope="col" class="text-center">Prénom</th>
+						<th scope="col" class="text-center">Nom</th>
+						<th scope="col" class="text-center">Age</th>
+
+						<th scope="col" class="text-center">Date de naissance</th>
+
+						<th scope="col" class="text-center">Action</th>
+					</tr>
+				</thead>
+				<tbody class="text-center">
+
+					{% for personne in personnes %}
+
+
+						<tr>
+							<td align="center">{{personne.id}}</td>
+
+							<td align="center">{{personne.prenom}}</td>
+
+							<td align="center">{{personne.nom}}</td>
+							<td align="center">{{personne.age}}</td>
+
+							<td align="center">{{personne.naissance | date('d-m-Y')}}</td>
+
+
+							<td align="center" td class="edition ">
+								<a href="{{path('personne_edit', {'id':personne.id})}}" class="btn btn-primary">
+									Éditer
+								</a>
+
+
+							</td>
+
+
+						</tr>
+
+
+					{% endfor %}
+
+
+				</tbody>
+			</table>
+
+
+		</div>
+
+	</div>
+
+	{% block javascripts %}{% endblock %}
+{% endblock %}
