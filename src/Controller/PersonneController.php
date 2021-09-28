@@ -25,6 +25,19 @@ class PersonneController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/personne/show/{id}", name="personne_show")
+     */
+    public function show(PersonneRepository $personneRepo,$id): Response
+    {
+        $personne= $personneRepo->find($id);
+
+        $personnes = $personneRepo->findAll();
+        return $this->render('personne/show.html.twig', [
+            'personnes' => $personnes,
+        ]);
+    }
+
 
     /**
      * @Route("/personne/creation/new", name="personne_create")
@@ -69,4 +82,7 @@ class PersonneController extends AbstractController
             'editMode' => $personne->getId() !== null
         ]);
     }
+
+
+
 }
